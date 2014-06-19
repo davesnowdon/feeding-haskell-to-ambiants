@@ -28,8 +28,8 @@ runTrace (lowerLimit, upperLimit) = do
 
 createGame :: Integer -> IO Game
 createGame seed = do
-    s  <- readFile "test\\sample-world.txt"
-    i <- readFile "test\\sample.txt"
+    s  <- readFile "test/sample-world.txt"
+    i <- readFile "test/sample.txt"
     let b = parseBrain $ lines i
         w  = parseWorld s
         g = mkGame seed [ (Red, b), (Black, b) ] w
@@ -49,7 +49,7 @@ runGame h lowerLimit upperLimit gameLimit g = do
       then return g
       else runGame h lowerLimit upperLimit gameLimit g''
         where g' = multiStep g
-              g'' = g' { gameRound = (gameRound g') + 1 } 
+              g'' = g' { gameRound = (gameRound g') + 1 }
 
 multiStep :: Game -> Game
 multiStep g = let ids = keys . antPositions . world $ g
