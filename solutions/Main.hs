@@ -18,7 +18,7 @@ runTrace (lowerLimit, upperLimit) = do
     putStrLn ("Trace from " ++ show lowerLimit ++ " to " ++ show upperLimit)
     let seed = 12345
     g <- createGame seed
-    let dumpFilePath = ("test\\dump." ++ show lowerLimit ++ "-" ++ show upperLimit)
+    let dumpFilePath = ("test/dump." ++ show lowerLimit ++ "-" ++ show upperLimit)
     h <- openFile dumpFilePath WriteMode
     hSetNewlineMode h noNewlineTranslation
     hPutStr h ("random seed: " ++ show seed ++ "\n")
